@@ -1,0 +1,125 @@
+button,
+fieldset,
+input,
+legend,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+input[type="radio"],
+input[type="checkbox"] {
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: middle;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  background-color: transparent;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.1em solid $primary;
+
+  justify-self: center;
+  align-self: center;
+
+  display: grid;
+  place-content: center;
+}
+
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  // box-shadow: inset 1em 1em var(--accent-color);
+
+  transform-origin: center center;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+
+  cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: var(--color-neutral-400);
+}
+
+/* Buttons */
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--fg-color);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 4px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  transition: color 0.2s ease-in-out;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+
+  &:hover {
+    color: var(--color-neutral-50);
+    background-color: var(--color-neutral-700);
+  }
+
+  &[type="submit"] {
+    background-color: var(--accent-color);
+
+    &:hover {
+      background-color: hsl(213, 73%, 40%);
+    }
+  }
+
+  &:active {
+    background-color: var(--color-neutral-500);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-neutral-400);
+  }
+
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  /* Offset the shadow by the border width */
+  box-shadow: 0 0 0 2px var(--color-neutral-400);
+  border-radius: 0.25rem;
+}
